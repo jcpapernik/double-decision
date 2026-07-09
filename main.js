@@ -967,34 +967,59 @@ function drawDecoySign(x, y, scale = 1, type = 'triangle') {
   ctx.restore();
 }
 
-// Fill static high-contrast noise inside a rectangle boundary (slowed down, deterministic LCG)
-function fillNoiseRect(x, y, w, h) {
-  const cellSize = 4; // Smaller cell block size for high-resolution static texture
-  const cols = Math.ceil(w / cellSize);
-  const rows = Math.ceil(h / cellSize);
+// Offscreen static noise frames cache to eliminate per-frame CPU loop overhead
+const NOISE_FRAMES = [];
+const NUM_NOISE_FRAMES = 4;
+const NOISE_SIZE = 800;
+const NOISE_CELL_SIZE = 4;
 
-  // Update static pattern every 120ms (prevents high-frequency visual vibration)
-  const timeBlock = Math.floor(performance.now() / 120);
-  let seed = timeBlock * 31 + Math.sin(x) * 17 + Math.cos(y) * 13;
-
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      // Linear Congruential Generator
-      seed = (seed * 9301 + 49297) % 233280;
-      const rand = seed / 233280;
-
-      if (rand < 0.35) {
-        ctx.fillStyle = '#020617';
-      } else if (rand < 0.70) {
-        ctx.fillStyle = '#1e293b';
-      } else if (rand < 0.90) {
-        ctx.fillStyle = '#475569';
-      } else {
-        ctx.fillStyle = '#cbd5e1';
+function initNoiseFrames() {
+  const colors = ['#020617', '#1e293b', '#475569', '#cbd5e1'];
+  for (let f = 0; f < NUM_NOISE_FRAMES; f++) {
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = NOISE_SIZE;
+    offCanvas.height = NOISE_SIZE;
+    const offCtx = offCanvas.getContext('2d');
+    
+    const cols = NOISE_SIZE / NOISE_CELL_SIZE;
+    const rows = NOISE_SIZE / NOISE_CELL_SIZE;
+    
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const rand = Math.random();
+        let color;
+        if (rand < 0.35) {
+          color = '#020617';
+        } else if (rand < 0.70) {
+          color = '#1e293b';
+        } else if (rand < 0.90) {
+          color = '#475569';
+        } else {
+          color = '#cbd5e1';
+        }
+        offCtx.fillStyle = color;
+        offCtx.fillRect(c * NOISE_CELL_SIZE, r * NOISE_CELL_SIZE, NOISE_CELL_SIZE, NOISE_CELL_SIZE);
       }
-      ctx.fillRect(x + c * cellSize, y + r * cellSize, cellSize, cellSize);
     }
+    NOISE_FRAMES.push(offCanvas);
   }
+}
+
+// Fill static high-contrast noise inside a rectangle boundary (utilizes offscreen cache for speed)
+function fillNoiseRect(x, y, w, h) {
+  if (NOISE_FRAMES.length === 0) return;
+
+  // Determine frame based on 120ms intervals (maintains the slow static texture effect)
+  const timeBlock = Math.floor(performance.now() / 120);
+  const frameIndex = timeBlock % NUM_NOISE_FRAMES;
+
+  // Derive stable source coordinates from layout to avoid random shifting of content
+  // Adding deterministic offsets prevents alignment duplication
+  const offset = frameIndex * 17;
+  const sx = Math.max(0, Math.min(NOISE_SIZE - w, Math.floor(Math.abs(x + offset) % (NOISE_SIZE - w))));
+  const sy = Math.max(0, Math.min(NOISE_SIZE - h, Math.floor(Math.abs(y + offset) % (NOISE_SIZE - h))));
+
+  ctx.drawImage(NOISE_FRAMES[frameIndex], sx, sy, w, h, x, y, w, h);
 }
 
 // Draw visual static mask (local shapes over background landscape, not full screen)
@@ -2068,6 +2093,7 @@ dbFreezeStimulus.addEventListener('change', (e) => {
 
 // --- Initialization ---
 window.addEventListener('DOMContentLoaded', () => {
+  initNoiseFrames();
   loadLeaderboard();
   updateCampaignLevelUI();
   requestAnimationFrame(gameLoop);
