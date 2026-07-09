@@ -805,7 +805,7 @@ function drawDecoySign(x, y, scale = 1, type = 'triangle') {
 
 // Fill static high-contrast noise inside a rectangle boundary (slowed down, deterministic LCG)
 function fillNoiseRect(x, y, w, h) {
-  const cellSize = 12; // Larger cell block size to reduce pixel density shimmer
+  const cellSize = 4; // Smaller cell block size for high-resolution static texture
   const cols = Math.ceil(w / cellSize);
   const rows = Math.ceil(h / cellSize);
 
