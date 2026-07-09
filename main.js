@@ -1472,11 +1472,6 @@ function loadLeaderboard() {
     headerHighScore.textContent = '0 pts';
   }
 
-  // Load level progression index
-  const savedLevel = localStorage.getItem('double_decision_campaign_level');
-  if (savedLevel) {
-    state.currentLevelIndex = parseInt(savedLevel);
-  }
 }
 
 function saveScoreToLeaderboard(score, bestSpeed, accuracy) {
@@ -1837,7 +1832,6 @@ btnNextLevel.addEventListener('click', () => {
   playSound('tick');
   if (state.currentLevelIndex < LEVEL_MATRIX.length - 1) {
     state.currentLevelIndex++;
-    localStorage.setItem('double_decision_campaign_level', state.currentLevelIndex.toString());
   }
   changeState('IDLE');
 });
@@ -1863,7 +1857,6 @@ btnResetCampaign.addEventListener('click', () => {
   const currentLevel = LEVEL_MATRIX[state.currentLevelIndex];
   if (confirm(`Are you sure you want to reset Level ${currentLevel.level} progression back to Level 1?`)) {
     state.currentLevelIndex = 0;
-    localStorage.setItem('double_decision_campaign_level', '0');
     changeState('IDLE');
     playSound('tick');
   }
@@ -1884,7 +1877,6 @@ btnResetLeaderboard.addEventListener('click', () => {
 // Level selection skip selector
 dbLevelSelect.addEventListener('change', (e) => {
   state.currentLevelIndex = parseInt(e.target.value);
-  localStorage.setItem('double_decision_campaign_level', state.currentLevelIndex.toString());
   
   // Set initial speed threshold to 500 ms for the loaded level
   state.flashDuration = state.speedLocked ? state.lockedSpeedVal : 500;
