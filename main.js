@@ -803,15 +803,22 @@ function drawDecoySign(x, y, scale = 1, type = 'triangle') {
   ctx.restore();
 }
 
-// Fill static high-contrast noise inside a rectangle boundary
+// Fill static high-contrast noise inside a rectangle boundary (slowed down, deterministic LCG)
 function fillNoiseRect(x, y, w, h) {
-  const cellSize = 6;
+  const cellSize = 12; // Larger cell block size to reduce pixel density shimmer
   const cols = Math.ceil(w / cellSize);
   const rows = Math.ceil(h / cellSize);
 
+  // Update static pattern every 120ms (prevents high-frequency visual vibration)
+  const timeBlock = Math.floor(performance.now() / 120);
+  let seed = timeBlock * 31 + Math.sin(x) * 17 + Math.cos(y) * 13;
+
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      const rand = Math.random();
+      // Linear Congruential Generator
+      seed = (seed * 9301 + 49297) % 233280;
+      const rand = seed / 233280;
+
       if (rand < 0.35) {
         ctx.fillStyle = '#020617';
       } else if (rand < 0.70) {
