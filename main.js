@@ -1,25 +1,25 @@
 // --- Campaign Level Matrix Configuration ---
 const LEVEL_MATRIX = [
-  // STAGE 1 (Desert scenery, highly distinct vehicle body types Sedan vs Truck, 0 distractors, 8 radial axes)
-  { level: 1, stage: 1, name: "Desert Novice 1", background: "DESERT", similarity: "EASY", distance: "CLOSE", distractors: 0, axes: 8 },
-  { level: 2, stage: 1, name: "Desert Novice 2", background: "DESERT", similarity: "EASY", distance: "MID",   distractors: 0, axes: 8 },
-  { level: 3, stage: 1, name: "Desert Novice 3", background: "DESERT", similarity: "EASY", distance: "FAR",   distractors: 0, axes: 8 },
-  { level: 4, stage: 1, name: "Desert Intermediate 1", background: "DESERT", similarity: "EASY", distance: "MID", distractors: 0, axes: 8 },
-  { level: 5, stage: 1, name: "Desert Intermediate 2", background: "DESERT", similarity: "EASY", distance: "FAR", distractors: 0, axes: 8 },
+  // STAGE 1 (Desert scenery, 0 distractors, 8 radial axes)
+  { level: 1, stage: 1, name: "Desert Novice 1", background: "DESERT", vehicleA: "convertible", vehicleB: "panel_van", distance: "CLOSE", distractors: 0, axes: 8 },
+  { level: 2, stage: 1, name: "Desert Novice 2", background: "DESERT", vehicleA: "convertible", vehicleB: "panel_van", distance: "MID",   distractors: 0, axes: 8 },
+  { level: 3, stage: 1, name: "Desert Novice 3", background: "DESERT", vehicleA: "pickup",      vehicleB: "panel_van", distance: "FAR",   distractors: 0, axes: 8 },
+  { level: 4, stage: 1, name: "Desert Intermediate 1", background: "DESERT", vehicleA: "pickup",      vehicleB: "panel_van", distance: "MID", distractors: 0, axes: 8 },
+  { level: 5, stage: 1, name: "Desert Intermediate 2", background: "DESERT", vehicleA: "coupe",       vehicleB: "convertible", distance: "FAR", distractors: 0, axes: 8 },
 
-  // STAGE 2 (Farmland rolling pasture hills, same body type Sedan but different colors Blue vs Red, up to 23 distractors, 8 radial axes)
-  { level: 6, stage: 2, name: "Pasture Scout 1", background: "FARMLAND", similarity: "MID", distance: "CLOSE", distractors: 6, axes: 8 },
-  { level: 7, stage: 2, name: "Pasture Scout 2", background: "FARMLAND", similarity: "MID", distance: "MID",   distractors: 12, axes: 8 },
-  { level: 8, stage: 2, name: "Pasture Challenger 1", background: "FARMLAND", similarity: "MID", distance: "FAR",   distractors: 16, axes: 8 },
-  { level: 9, stage: 2, name: "Pasture Challenger 2", background: "FARMLAND", similarity: "MID", distance: "MID",   distractors: 20, axes: 8 },
-  { level: 10, stage: 2, name: "Pasture Master", background: "FARMLAND", similarity: "MID", distance: "FAR",   distractors: 23, axes: 8 },
+  // STAGE 2 (Farmland rolling pasture hills, up to 23 distractors, 8 radial axes)
+  { level: 6, stage: 2, name: "Pasture Scout 1", background: "FARMLAND", vehicleA: "coupe",       vehicleB: "convertible", distance: "CLOSE", distractors: 6, axes: 8 },
+  { level: 7, stage: 2, name: "Pasture Scout 2", background: "FARMLAND", vehicleA: "convertible", vehicleB: "roadster",    distance: "MID",   distractors: 12, axes: 8 },
+  { level: 8, stage: 2, name: "Pasture Challenger 1", background: "FARMLAND", vehicleA: "convertible", vehicleB: "roadster",    distance: "FAR",   distractors: 16, axes: 8 },
+  { level: 9, stage: 2, name: "Pasture Challenger 2", background: "FARMLAND", vehicleA: "pickup",      vehicleB: "roadster",    distance: "MID",   distractors: 20, axes: 8 },
+  { level: 10, stage: 2, name: "Pasture Master", background: "FARMLAND", vehicleA: "roadster",    vehicleB: "wagon",       distance: "FAR",   distractors: 23, axes: 8 },
 
-  // STAGE 3 (Forest silhouettes, identical body shapes with minute roof cargo rack change, up to 47 distractors, 16 radial axes)
-  { level: 11, stage: 3, name: "Forest Elite 1", background: "FOREST", similarity: "HARD", distance: "CLOSE", distractors: 15, axes: 16 },
-  { level: 12, stage: 3, name: "Forest Elite 2", background: "FOREST", similarity: "HARD", distance: "MID",   distractors: 25, axes: 16 },
-  { level: 13, stage: 3, name: "Forest Master 1", background: "FOREST", similarity: "HARD", distance: "FAR",   distractors: 35, axes: 16 },
-  { level: 14, stage: 3, name: "Forest Master 2", background: "FOREST", similarity: "HARD", distance: "MID",   distractors: 43, axes: 16 },
-  { level: 15, stage: 3, name: "UFOV Grandmaster", background: "FOREST", similarity: "HARD", distance: "FAR",   distractors: 47, axes: 16 }
+  // STAGE 3 (Forest silhouettes, up to 47 distractors, 16 radial axes)
+  { level: 11, stage: 3, name: "Forest Elite 1", background: "FOREST", vehicleA: "pickup_rails", vehicleB: "pickup",      distance: "CLOSE", distractors: 15, axes: 16 },
+  { level: 12, stage: 3, name: "Forest Elite 2", background: "FOREST", vehicleA: "coupe",        vehicleB: "roadster",    distance: "MID",   distractors: 25, axes: 16 },
+  { level: 13, stage: 3, name: "Forest Master 1", background: "FOREST", vehicleA: "coupe",        vehicleB: "roadster",    distance: "FAR",   distractors: 35, axes: 16 },
+  { level: 14, stage: 3, name: "Forest Master 2", background: "FOREST", vehicleA: "coupe",        vehicleB: "coupe_rack",  distance: "MID",   distractors: 43, axes: 16 },
+  { level: 15, stage: 3, name: "UFOV Grandmaster", background: "FOREST", vehicleA: "coupe",        vehicleB: "coupe_rack",  distance: "FAR",   distractors: 47, axes: 16 }
 ];
 
 // --- Game State Variables ---
@@ -344,23 +344,85 @@ function playSound(type) {
 
 // --- Procedural Canvas Rendering Drawers ---
 
-// Draw a vintage-style blue-gray or custom colored car
-function drawCar(x, y, scale = 1, color = '#4b6584', strokeColor = '#1e272e', hasHoverGlow = false, hasRoofRack = false) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.scale(scale, scale);
+// Draw a specific vintage vehicle style based on dynamic key
+function drawVehicle(type, x, y, scale = 1, hasHoverGlow = false) {
+  const drawer = VEHICLE_DRAWERS[type];
+  if (drawer) {
+    drawer(x, y, scale, hasHoverGlow);
+  } else {
+    drawVehicleCoupe(x, y, scale, hasHoverGlow); // Fallback
+  }
+}
 
+// Map helper to format labels on the selection screen
+function formatVehicleName(type) {
+  switch (type) {
+    case 'convertible': return 'Convertible';
+    case 'panel_van': return 'Panel Van';
+    case 'pickup': return 'Pickup';
+    case 'coupe': return 'Coupe';
+    case 'roadster': return 'Roadster';
+    case 'wagon': return 'Station Wagon';
+    case 'pickup_rails': return 'Pickup (Rails)';
+    case 'coupe_rack': return 'Coupe (Rack)';
+    default: return 'Vehicle';
+  }
+}
+
+// Helper to configure vehicle glow highlights
+function setGlow(hasHoverGlow) {
   if (hasHoverGlow) {
     ctx.shadowColor = '#38bdf8';
     ctx.shadowBlur = 24;
   } else {
-    ctx.shadowColor = strokeColor;
+    ctx.shadowColor = '#1e272e';
     ctx.shadowBlur = 4;
   }
+}
 
-  // Car chassis bottom
-  ctx.fillStyle = color;
-  ctx.strokeStyle = strokeColor;
+// Helper to draw matching wheels and light elements for consistency
+function drawWheelsAndLights() {
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = '#2f3542';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2;
+
+  // Front and rear wheels
+  ctx.beginPath();
+  ctx.arc(-20, 8, 8, 0, Math.PI * 2);
+  ctx.arc(20, 8, 8, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  // Chrome hubcaps
+  ctx.fillStyle = '#dcdde1';
+  ctx.beginPath();
+  ctx.arc(-20, 8, 3, 0, Math.PI * 2);
+  ctx.arc(20, 8, 3, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Yellow headlight
+  ctx.fillStyle = '#fef08a';
+  ctx.beginPath();
+  ctx.arc(31, 0, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Red taillight
+  ctx.fillStyle = '#f43f5e';
+  ctx.beginPath();
+  ctx.arc(-31, 0, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+// 1. Coupe (rounded roof line)
+function drawVehicleCoupe(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
   ctx.lineWidth = 2.5;
 
   ctx.beginPath();
@@ -375,7 +437,6 @@ function drawCar(x, y, scale = 1, color = '#4b6584', strokeColor = '#1e272e', ha
   ctx.fill();
   ctx.stroke();
 
-  // Cabin
   ctx.beginPath();
   ctx.moveTo(-20, -5);
   ctx.lineTo(-12, -18);
@@ -385,7 +446,6 @@ function drawCar(x, y, scale = 1, color = '#4b6584', strokeColor = '#1e272e', ha
   ctx.fill();
   ctx.stroke();
 
-  // Windows
   ctx.fillStyle = '#ffffff';
   ctx.beginPath();
   ctx.moveTo(-16, -6);
@@ -405,90 +465,207 @@ function drawCar(x, y, scale = 1, color = '#4b6584', strokeColor = '#1e272e', ha
   ctx.fill();
   ctx.stroke();
 
-  // Roof luggage rack (cargo box) for fine discrimination (Stage 3)
-  if (hasRoofRack) {
-    ctx.fillStyle = '#2f3542';
-    ctx.strokeStyle = strokeColor;
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.rect(-12, -23, 24, 5);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.lineWidth = 2.0;
-    ctx.beginPath();
-    ctx.moveTo(-8, -18);
-    ctx.lineTo(-8, -20);
-    ctx.moveTo(8, -18);
-    ctx.lineTo(8, -20);
-    ctx.stroke();
-  }
-
-  // Wheels
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = '#2f3542';
-  ctx.strokeStyle = strokeColor;
-  ctx.lineWidth = 2;
-
-  // Front wheel
-  ctx.beginPath();
-  ctx.arc(-20, 8, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-  
-  // Rear wheel
-  ctx.beginPath();
-  ctx.arc(20, 8, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Wheel hubs (chrome)
-  ctx.fillStyle = '#dcdde1';
-  ctx.beginPath();
-  ctx.arc(-20, 8, 3, 0, Math.PI * 2);
-  ctx.arc(20, 8, 3, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Headlights
-  ctx.fillStyle = '#fef08a';
-  ctx.beginPath();
-  ctx.arc(31, 0, 2.5, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Taillights
-  ctx.fillStyle = '#f43f5e';
-  ctx.beginPath();
-  ctx.arc(-31, 0, 2.5, 0, Math.PI * 2);
-  ctx.fill();
-
+  drawWheelsAndLights();
   ctx.restore();
 }
 
-// Draw a vintage-style blue-gray flatbed pickup truck
-function drawTruck(x, y, scale = 1, color = '#57606f', strokeColor = '#1e272e', hasHoverGlow = false) {
+// 2. Coupe with Cargo Rack (Coupe B)
+function drawVehicleCoupeB(x, y, scale = 1, hasHoverGlow = false) {
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
 
-  if (hasHoverGlow) {
-    ctx.shadowColor = '#38bdf8';
-    ctx.shadowBlur = 24;
-  } else {
-    ctx.shadowColor = strokeColor;
-    ctx.shadowBlur = 4;
-  }
-
-  ctx.fillStyle = color;
-  ctx.strokeStyle = strokeColor;
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
   ctx.lineWidth = 2.5;
 
-  // Cargo Bed (Rectangle block)
   ctx.beginPath();
-  ctx.rect(-35, -18, 42, 23);
+  ctx.moveTo(-35, 5);
+  ctx.lineTo(-30, -5);
+  ctx.quadraticCurveTo(-15, -6, 0, -6);
+  ctx.quadraticCurveTo(15, -6, 30, -5);
+  ctx.lineTo(35, 5);
+  ctx.lineTo(30, 8);
+  ctx.lineTo(-30, 8);
+  ctx.closePath();
   ctx.fill();
   ctx.stroke();
 
-  // Cabin
+  ctx.beginPath();
+  ctx.moveTo(-20, -5);
+  ctx.lineTo(-12, -18);
+  ctx.quadraticCurveTo(0, -22, 12, -18);
+  ctx.lineTo(20, -5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(-16, -6);
+  ctx.lineTo(-10, -15);
+  ctx.lineTo(-1, -15);
+  ctx.lineTo(-1, -6);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(1, -6);
+  ctx.lineTo(1, -15);
+  ctx.lineTo(10, -15);
+  ctx.lineTo(16, -6);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#2f3542';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.rect(-12, -23, 24, 5);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.lineWidth = 2.0;
+  ctx.beginPath();
+  ctx.moveTo(-8, -18);
+  ctx.lineTo(-8, -20);
+  ctx.moveTo(8, -18);
+  ctx.lineTo(8, -20);
+  ctx.stroke();
+
+  drawWheelsAndLights();
+  ctx.restore();
+}
+
+// 3. Convertible (open top with cream folded roof back)
+function drawVehicleConvertible(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2.5;
+
+  ctx.beginPath();
+  ctx.moveTo(-35, 5);
+  ctx.lineTo(-31, -5);
+  ctx.lineTo(-12, -5);
+  ctx.lineTo(-10, -15);
+  ctx.lineTo(6, -15);
+  ctx.lineTo(10, -5);
+  ctx.lineTo(30, -5);
+  ctx.lineTo(35, 5);
+  ctx.lineTo(30, 8);
+  ctx.lineTo(-30, 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.ellipse(-22, -8, 7, 4, Math.PI / 10, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.strokeStyle = '#1e272e';
+  ctx.beginPath();
+  ctx.moveTo(6, -15);
+  ctx.lineTo(10, -5);
+  ctx.stroke();
+
+  drawWheelsAndLights();
+  ctx.restore();
+}
+
+// 4. Roadster (completely open top, low rear)
+function drawVehicleRoadster(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2.5;
+
+  ctx.beginPath();
+  ctx.moveTo(-35, 5);
+  ctx.lineTo(-33, 0);
+  ctx.lineTo(-10, 0);
+  ctx.lineTo(-8, -14);
+  ctx.lineTo(4, -14);
+  ctx.lineTo(8, 0);
+  ctx.lineTo(31, 0);
+  ctx.lineTo(35, 5);
+  ctx.lineTo(30, 8);
+  ctx.lineTo(-30, 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  drawWheelsAndLights();
+  ctx.restore();
+}
+
+// 5. Panel Van (boxy, tall flat back)
+function drawVehiclePanelVan(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2.5;
+
+  ctx.beginPath();
+  ctx.moveTo(-35, 5);
+  ctx.lineTo(-35, -16);
+  ctx.lineTo(10, -16);
+  ctx.lineTo(21, -4);
+  ctx.lineTo(34, -4);
+  ctx.lineTo(35, 5);
+  ctx.lineTo(30, 8);
+  ctx.lineTo(-30, 8);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.rect(-34, -17, 43, 3.5);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(11, -12);
+  ctx.lineTo(18, -5);
+  ctx.lineTo(9, -5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  drawWheelsAndLights();
+  ctx.restore();
+}
+
+// 6. Pickup Truck (flat empty cargo bed)
+function drawVehiclePickup(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2.5;
+
   ctx.beginPath();
   ctx.moveTo(7, 5);
   ctx.lineTo(7, -13);
@@ -499,7 +676,11 @@ function drawTruck(x, y, scale = 1, color = '#57606f', strokeColor = '#1e272e', 
   ctx.fill();
   ctx.stroke();
 
-  // Cabin Window
+  ctx.beginPath();
+  ctx.rect(-35, -2, 42, 7);
+  ctx.fill();
+  ctx.stroke();
+
   ctx.fillStyle = '#ffffff';
   ctx.beginPath();
   ctx.moveTo(13, -10);
@@ -510,150 +691,133 @@ function drawTruck(x, y, scale = 1, color = '#57606f', strokeColor = '#1e272e', 
   ctx.fill();
   ctx.stroke();
 
-  // Bottom chassis connector
-  ctx.fillStyle = '#2f3542';
-  ctx.fillRect(-32, 5, 62, 4);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(7, -14, 18, 3);
 
-  // Wheels
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = '#2f3542';
-  ctx.strokeStyle = strokeColor;
-  ctx.lineWidth = 2;
-
-  // Front wheel
-  ctx.beginPath();
-  ctx.arc(22, 9, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Rear wheels (dual axel)
-  ctx.beginPath();
-  ctx.arc(-14, 9, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(-26, 9, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Wheel Hubs
-  ctx.fillStyle = '#dcdde1';
-  ctx.beginPath();
-  ctx.arc(22, 9, 3, 0, Math.PI * 2);
-  ctx.arc(-14, 9, 3, 0, Math.PI * 2);
-  ctx.arc(-26, 9, 3, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Headlights
-  ctx.fillStyle = '#fef08a';
-  ctx.beginPath();
-  ctx.arc(33, 1, 2.5, 0, Math.PI * 2);
-  ctx.fill();
-
+  drawWheelsAndLights();
   ctx.restore();
 }
 
-// Draw a flat-backed Minivan/SUV silhouette matching the car's color/accents
-function drawMinivan(x, y, scale = 1, color = '#4b6584', strokeColor = '#1e272e', hasHoverGlow = false) {
+// 7. Pickup with Rails (wooden side fences)
+function drawVehiclePickupRails(x, y, scale = 1, hasHoverGlow = false) {
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
 
-  if (hasHoverGlow) {
-    ctx.shadowColor = '#38bdf8';
-    ctx.shadowBlur = 24;
-  } else {
-    ctx.shadowColor = strokeColor;
-    ctx.shadowBlur = 4;
-  }
-
-  ctx.fillStyle = color;
-  ctx.strokeStyle = strokeColor;
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
   ctx.lineWidth = 2.5;
 
-  // Minivan chassis/cabin (flat-backed silhouette)
   ctx.beginPath();
-  ctx.moveTo(-35, 6);
-  ctx.lineTo(-35, -4);    // Lower flat back
-  ctx.lineTo(-32, -15);   // Upper flat back
-  ctx.lineTo(8, -15);     // Horizontal roofline
-  ctx.lineTo(21, -4);     // Windshield slope
-  ctx.lineTo(34, -4);     // Hood line
-  ctx.lineTo(35, 6);
-  ctx.lineTo(32, 9);
-  ctx.lineTo(-32, 9);
+  ctx.moveTo(7, 5);
+  ctx.lineTo(7, -13);
+  ctx.lineTo(24, -13);
+  ctx.quadraticCurveTo(32, -13, 34, -3);
+  ctx.lineTo(34, 5);
   ctx.closePath();
   ctx.fill();
   ctx.stroke();
 
-  // Windows
+  ctx.beginPath();
+  ctx.rect(-35, -2, 42, 7);
+  ctx.fill();
+  ctx.stroke();
+
   ctx.fillStyle = '#ffffff';
   ctx.beginPath();
-  ctx.moveTo(-30, -12);
-  ctx.lineTo(-14, -12);
-  ctx.lineTo(-14, -4);
-  ctx.lineTo(-30, -4);
+  ctx.moveTo(13, -10);
+  ctx.lineTo(23, -10);
+  ctx.quadraticCurveTo(28, -10, 29, -4);
+  ctx.lineTo(13, -4);
   ctx.closePath();
   ctx.fill();
   ctx.stroke();
 
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(7, -14, 18, 3);
+
+  ctx.strokeStyle = '#8c593b';
+  ctx.lineWidth = 1.8;
   ctx.beginPath();
-  ctx.moveTo(-11, -12);
-  ctx.lineTo(5, -12);
-  ctx.lineTo(5, -4);
-  ctx.lineTo(-11, -4);
-  ctx.closePath();
-  ctx.fill();
+  ctx.moveTo(-31, -2); ctx.lineTo(-31, -11);
+  ctx.moveTo(-18, -2); ctx.lineTo(-18, -11);
+  ctx.moveTo(-5, -2);  ctx.lineTo(-5, -11);
+  ctx.moveTo(-35, -7); ctx.lineTo(7, -7);
+  ctx.moveTo(-35, -11); ctx.lineTo(7, -11);
   ctx.stroke();
 
-  ctx.beginPath();
-  ctx.moveTo(8, -12);
-  ctx.lineTo(18, -4);
-  ctx.lineTo(8, -4);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-
-  // Wheels
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = '#2f3542';
-  ctx.strokeStyle = strokeColor;
-  ctx.lineWidth = 2;
-
-  // Front wheel
-  ctx.beginPath();
-  ctx.arc(18, 9, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Rear wheel
-  ctx.beginPath();
-  ctx.arc(-18, 9, 8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Wheel hubs (chrome accents)
-  ctx.fillStyle = '#dcdde1';
-  ctx.beginPath();
-  ctx.arc(18, 9, 3, 0, Math.PI * 2);
-  ctx.arc(-18, 9, 3, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Headlight
-  ctx.fillStyle = '#fef08a';
-  ctx.beginPath();
-  ctx.arc(33, 1, 2.5, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Taillight
-  ctx.fillStyle = '#f43f5e';
-  ctx.beginPath();
-  ctx.arc(-33, 1, 2.5, 0, Math.PI * 2);
-  ctx.fill();
-
+  drawWheelsAndLights();
   ctx.restore();
 }
+
+// 8. Station Wagon (Woody slatted panels)
+function drawVehicleStationWagon(x, y, scale = 1, hasHoverGlow = false) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  setGlow(hasHoverGlow);
+
+  ctx.fillStyle = '#4b6584';
+  ctx.strokeStyle = '#1e272e';
+  ctx.lineWidth = 2.5;
+
+  ctx.beginPath();
+  ctx.moveTo(7, 5);
+  ctx.lineTo(7, -13);
+  ctx.lineTo(24, -13);
+  ctx.quadraticCurveTo(32, -13, 34, -3);
+  ctx.lineTo(34, 5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.rect(-35, -13, 42, 18);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#b87c56';
+  ctx.fillRect(-33, -11, 38, 14);
+
+  ctx.strokeStyle = '#8c593b';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.rect(-33, -11, 38, 14);
+  ctx.moveTo(-33, -7); ctx.lineTo(5, -7);
+  ctx.moveTo(-33, -2); ctx.lineTo(5, -2);
+  ctx.moveTo(-20, -11); ctx.lineTo(-20, 3);
+  ctx.moveTo(-7, -11); ctx.lineTo(-7, 3);
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(13, -10);
+  ctx.lineTo(23, -10);
+  ctx.quadraticCurveTo(28, -10, 29, -4);
+  ctx.lineTo(13, -4);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(-34, -14, 59, 2.5);
+
+  drawWheelsAndLights();
+  ctx.restore();
+}
+
+// Map key links to actual drawing methods
+const VEHICLE_DRAWERS = {
+  'coupe': drawVehicleCoupe,
+  'coupe_rack': drawVehicleCoupeB,
+  'convertible': drawVehicleConvertible,
+  'roadster': drawVehicleRoadster,
+  'panel_van': drawVehiclePanelVan,
+  'pickup': drawVehiclePickup,
+  'pickup_rails': drawVehiclePickupRails,
+  'wagon': drawVehicleStationWagon
+};
 
 // Draw the Route 66 Shield Sign from the user image
 function drawRoadSign(x, y, scale = 1, isActive = true) {
@@ -1003,19 +1167,9 @@ function drawCentralChoiceCards() {
 
   const currentLevel = LEVEL_MATRIX[state.currentLevelIndex];
 
-  if (currentLevel.similarity === 'EASY') {
-    // Choice A: Slate Car, Choice B: Flatbed Truck
-    drawCar(CHOICE_CAR_POS.x, CHOICE_CAR_POS.y, carScale, '#4b6584', '#1e272e', isCarHovered, false);
-    drawTruck(CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y, truckScale, '#57606f', '#1e272e', isTruckHovered);
-  } else if (currentLevel.similarity === 'MID') {
-    // Choice A: Slate-blue Car, Choice B: Minivan (identical slate-blue color)
-    drawCar(CHOICE_CAR_POS.x, CHOICE_CAR_POS.y, carScale, '#4b6584', '#1e272e', isCarHovered, false);
-    drawMinivan(CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y, truckScale, '#4b6584', '#1e272e', isTruckHovered);
-  } else {
-    // Choice A: Slate-blue Car, Choice B: Identical car with Roof Cargo Rack
-    drawCar(CHOICE_CAR_POS.x, CHOICE_CAR_POS.y, carScale, '#4b6584', '#1e272e', isCarHovered, false);
-    drawCar(CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y, truckScale, '#4b6584', '#1e272e', isTruckHovered, true);
-  }
+  // Draw Option A (Left) and Option B (Right)
+  drawVehicle(currentLevel.vehicleA, CHOICE_CAR_POS.x, CHOICE_CAR_POS.y, carScale, isCarHovered);
+  drawVehicle(currentLevel.vehicleB, CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y, truckScale, isTruckHovered);
 
   // Draw labels
   ctx.save();
@@ -1026,16 +1180,10 @@ function drawCentralChoiceCards() {
   ctx.textAlign = 'center';
   
   ctx.fillStyle = isCarHovered ? '#38bdf8' : '#cbd5e1';
-  ctx.fillText('Car A', CHOICE_CAR_POS.x, CHOICE_CAR_POS.y + 55);
+  ctx.fillText(formatVehicleName(currentLevel.vehicleA), CHOICE_CAR_POS.x, CHOICE_CAR_POS.y + 55);
   
   ctx.fillStyle = isTruckHovered ? '#38bdf8' : '#cbd5e1';
-  if (currentLevel.similarity === 'EASY') {
-    ctx.fillText('Truck', CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y + 55);
-  } else if (currentLevel.similarity === 'MID') {
-    ctx.fillText('Minivan', CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y + 55);
-  } else {
-    ctx.fillText('Car (Rack)', CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y + 55);
-  }
+  ctx.fillText(formatVehicleName(currentLevel.vehicleB), CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y + 55);
   ctx.restore();
 }
 
@@ -1077,15 +1225,7 @@ function drawFeedback() {
   ctx.stroke();
 
   ctx.shadowBlur = 0;
-  if (state.stimulusCenter === 'car') {
-    drawCar(CENTER_X, CENTER_Y - 5, 1.35, '#4b6584', '#1e272e', false, false);
-  } else if (state.stimulusCenter === 'minivan') {
-    drawMinivan(CENTER_X, CENTER_Y - 5, 1.35, '#4b6584', '#1e272e', false);
-  } else if (state.stimulusCenter === 'car_rack') {
-    drawCar(CENTER_X, CENTER_Y - 5, 1.35, '#4b6584', '#1e272e', false, true);
-  } else {
-    drawTruck(CENTER_X, CENTER_Y - 5, 1.35, '#57606f', '#1e272e', false);
-  }
+  drawVehicle(state.stimulusCenter, CENTER_X, CENTER_Y - 5, 1.35, false);
 
   // Label text under center
   ctx.fillStyle = isCenterCorrect ? '#10b981' : '#f43f5e';
@@ -1220,7 +1360,7 @@ function updateDebugPanelMetrics() {
   dbMetricDistractors.textContent = `${state.decoys.length} / ${currentLevel.distractors}`;
   dbMetricSpeed.textContent = `${state.flashDuration}ms`;
   dbMetricStreak.textContent = state.correctStreak.toString();
-  dbMetricSimilarity.textContent = currentLevel.similarity;
+  dbMetricSimilarity.textContent = `${currentLevel.vehicleA} vs ${currentLevel.vehicleB}`;
   dbMetricAxes.textContent = currentLevel.axes.toString();
 
   dbSpeedVal.textContent = `${state.flashDuration} ms`;
@@ -1251,14 +1391,7 @@ function changeState(newPhase) {
       break;
 
     case 'STIMULUS':
-      // Map stimulus center vehicle based on stage configurations
-      if (currentLevel.similarity === 'EASY') {
-        state.stimulusCenter = Math.random() < 0.5 ? 'car' : 'truck';
-      } else if (currentLevel.similarity === 'MID') {
-        state.stimulusCenter = Math.random() < 0.5 ? 'car' : 'minivan';
-      } else {
-        state.stimulusCenter = Math.random() < 0.5 ? 'car' : 'car_rack';
-      }
+      state.stimulusCenter = Math.random() < 0.5 ? currentLevel.vehicleA : currentLevel.vehicleB;
       
       const dirs = getDirectionsForLevel();
       state.stimulusAngleIndex = Math.floor(Math.random() * dirs.length);
@@ -1644,15 +1777,7 @@ function draw() {
 
     case 'STIMULUS':
       // Render Central Vehicle based on stage similarity rules
-      if (state.stimulusCenter === 'car') {
-        drawCar(CENTER_X, CENTER_Y, 1.0, '#4b6584', '#1e272e', false, false);
-      } else if (state.stimulusCenter === 'minivan') {
-        drawMinivan(CENTER_X, CENTER_Y, 1.0, '#4b6584', '#1e272e', false);
-      } else if (state.stimulusCenter === 'car_rack') {
-        drawCar(CENTER_X, CENTER_Y, 1.0, '#4b6584', '#1e272e', false, true);
-      } else {
-        drawTruck(CENTER_X, CENTER_Y, 1.0, '#57606f', '#1e272e', false);
-      }
+      drawVehicle(state.stimulusCenter, CENTER_X, CENTER_Y, 1.0, false);
 
       // Render Peripheral Route 66 Shield sign
       const dirs = getDirectionsForLevel();
@@ -1816,15 +1941,9 @@ canvas.addEventListener('click', () => {
 
     let chosenCenter = null;
     if (distCar <= CHOICE_RADIUS) {
-      chosenCenter = 'car';
+      chosenCenter = currentLevel.vehicleA;
     } else if (distTruck <= CHOICE_RADIUS) {
-      if (currentLevel.similarity === 'EASY') {
-        chosenCenter = 'truck';
-      } else if (currentLevel.similarity === 'MID') {
-        chosenCenter = 'minivan';
-      } else {
-        chosenCenter = 'car_rack';
-      }
+      chosenCenter = currentLevel.vehicleB;
     }
 
     if (chosenCenter !== null) {
