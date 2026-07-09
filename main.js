@@ -80,9 +80,9 @@ const CENTER_X = CANVAS_WIDTH / 2;
 const CENTER_Y = CANVAS_HEIGHT / 2;
 
 // Concentric target radii
-const RADIUS_CLOSE = 150;
-const RADIUS_MID = 240;
-const RADIUS_FAR = 320;
+const RADIUS_CLOSE = 190;
+const RADIUS_MID = 270;
+const RADIUS_FAR = 345;
 
 // Central Choice Coordinates (centered, squeezed closer together)
 const CHOICE_CAR_POS = { x: CENTER_X - 80, y: CENTER_Y + 20 };
