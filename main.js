@@ -84,10 +84,10 @@ const RADIUS_CLOSE = 150;
 const RADIUS_MID = 240;
 const RADIUS_FAR = 320;
 
-// Central Choice Coordinates (positioned below the center vehicle area)
-const CHOICE_CAR_POS = { x: CENTER_X - 140, y: CENTER_Y + 90 };
-const CHOICE_TRUCK_POS = { x: CENTER_X + 140, y: CENTER_Y + 90 };
-const CHOICE_RADIUS = 80;
+// Central Choice Coordinates (centered, squeezed closer together)
+const CHOICE_CAR_POS = { x: CENTER_X - 80, y: CENTER_Y + 20 };
+const CHOICE_TRUCK_POS = { x: CENTER_X + 80, y: CENTER_Y + 20 };
+const CHOICE_RADIUS = 65;
 
 // --- DOM References ---
 const canvas = document.getElementById('game-canvas');
