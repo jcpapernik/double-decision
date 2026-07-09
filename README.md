@@ -1,6 +1,13 @@
 # Double Decision - Cognitive Useful Field of View (UFOV) Trainer
 
-A responsive, high-performance web clone of BrainHQ's classic cognitive game **Double Decision**, built with HTML5 Canvas, Vanilla JavaScript, and Tailwind CSS. It is designed to train speed of processing and expand your **Useful Field of View (UFOV)**.
+A responsive, high-performance web clone of BrainHQ's classic cognitive game **Double Decision**, built with HTML5 Canvas, Vanilla JavaScript, and Tailwind CSS. It is designed to train speed of processing and expand your **Useful Field of view (UFOV)**.
+
+---
+
+## 🎮 Play Online
+
+You can play the game instantly in your browser here:
+👉 **[jcpapernik.github.io/double-decision](https://jcpapernik.github.io/double-decision/)**
 
 ---
 
