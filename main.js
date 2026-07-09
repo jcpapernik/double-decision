@@ -1230,6 +1230,7 @@ function changeState(newPhase) {
       break;
 
     case 'FEEDBACK':
+      processFeedback();
       break;
 
     case 'GAMEOVER':
