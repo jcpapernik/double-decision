@@ -147,21 +147,21 @@ let mouseY = 0;
 
 // --- Background Image Loading ---
 const bgImage = new Image();
-bgImage.src = 'background.jpg';
+bgImage.src = 'assets/background.jpg';
 let bgLoaded = false;
 bgImage.onload = () => {
   bgLoaded = true;
 };
 
 const pastureImage = new Image();
-pastureImage.src = 'pasture.jpg';
+pastureImage.src = 'assets/pasture.jpg';
 let pastureLoaded = false;
 pastureImage.onload = () => {
   pastureLoaded = true;
 };
 
 const forestImage = new Image();
-forestImage.src = 'forest.jpg';
+forestImage.src = 'assets/forest.jpg';
 let forestLoaded = false;
 forestImage.onload = () => {
   forestLoaded = true;
@@ -169,7 +169,7 @@ forestImage.onload = () => {
 
 // --- Custom Route 66 Sign Loader (Flood Fill Transparency) ---
 const signImage = new Image();
-signImage.src = 'route66.png';
+signImage.src = 'assets/route66.png';
 let signLoaded = false;
 let processedSignCanvas = null;
 
