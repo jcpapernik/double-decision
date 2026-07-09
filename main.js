@@ -85,8 +85,8 @@ const RADIUS_MID = 240;
 const RADIUS_FAR = 320;
 
 // Central Choice Coordinates (positioned below the center vehicle area)
-const CHOICE_CAR_POS = { x: CENTER_X - 140, y: CENTER_Y + 140 };
-const CHOICE_TRUCK_POS = { x: CENTER_X + 140, y: CENTER_Y + 140 };
+const CHOICE_CAR_POS = { x: CENTER_X - 140, y: CENTER_Y + 90 };
+const CHOICE_TRUCK_POS = { x: CENTER_X + 140, y: CENTER_Y + 90 };
 const CHOICE_RADIUS = 80;
 
 // --- DOM References ---
@@ -1149,16 +1149,6 @@ function drawSectorHighlight(index, color) {
 
 // Draw the inline Central Choice Canvas choices (direct borderless vehicle glows)
 function drawCentralChoiceCards() {
-  ctx.save();
-  ctx.fillStyle = '#ffffff';
-  ctx.shadowColor = '#000000';
-  ctx.shadowBlur = 4;
-  ctx.font = 'bold 22px sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('Which vehicle did you see?', CENTER_X, CENTER_Y - 140);
-  ctx.restore();
-
   const isCarHovered = (state.hoveredCenterChoice === 'car');
   const carScale = isCarHovered ? 1.45 : 1.25;
 
@@ -1170,21 +1160,6 @@ function drawCentralChoiceCards() {
   // Draw Option A (Left) and Option B (Right)
   drawVehicle(currentLevel.vehicleA, CHOICE_CAR_POS.x, CHOICE_CAR_POS.y, carScale, isCarHovered);
   drawVehicle(currentLevel.vehicleB, CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y, truckScale, isTruckHovered);
-
-  // Draw labels
-  ctx.save();
-  ctx.fillStyle = '#ffffff';
-  ctx.shadowColor = '#000000';
-  ctx.shadowBlur = 4;
-  ctx.font = 'bold 16px sans-serif';
-  ctx.textAlign = 'center';
-  
-  ctx.fillStyle = isCarHovered ? '#38bdf8' : '#cbd5e1';
-  ctx.fillText(formatVehicleName(currentLevel.vehicleA), CHOICE_CAR_POS.x, CHOICE_CAR_POS.y + 55);
-  
-  ctx.fillStyle = isTruckHovered ? '#38bdf8' : '#cbd5e1';
-  ctx.fillText(formatVehicleName(currentLevel.vehicleB), CHOICE_TRUCK_POS.x, CHOICE_TRUCK_POS.y + 55);
-  ctx.restore();
 }
 
 // Draw feedback annotations (Correct/Incorrect highlights)
