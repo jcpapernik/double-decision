@@ -1,34 +1,69 @@
-# Double Decision Cognitive Trainer
+# Double Decision - Cognitive Useful Field of View (UFOV) Trainer
 
 A responsive, high-performance web clone of BrainHQ's classic cognitive game **Double Decision**, built with HTML5 Canvas, Vanilla JavaScript, and Tailwind CSS. It is designed to train speed of processing and expand your **Useful Field of View (UFOV)**.
 
-## Features
+---
 
-1. **Precision Game Loop & High-Precision Timing**:
-   - Utilizes `requestAnimationFrame` for stutter-free, frame-synced canvas rendering.
-   - Measures exact presentation periods utilizing `performance.now()`, ensuring sub-millisecond accuracy when flashing the central vehicle and peripheral sign.
-2. **Procedural Vector Drawing**:
-   - Stimuli (Car, Truck, road warning sign) are drawn procedurally using the HTML5 Canvas 2D context.
-   - High-contrast neon aesthetics tailored for modern dark mode setups.
-3. **Double Response Verification**:
-   - **Part 1**: Determine if the vehicle in the center was a Car or a Truck.
-   - **Part 2**: Locate which of the 8 peripheral quadrants/directions (North, North-East, East, etc.) contained the yellow road sign.
-4. **Adaptive Difficulty Engine**:
-   - Automatically adapts speed threshold depending on performance:
-     - **Both Correct**: Decrease presentation flash duration by **20ms** (making it faster/harder, down to a minimum of 16ms).
-     - **Either Incorrect**: Increase presentation flash duration by **20ms** (making it slower/easier, up to a maximum of 1000ms).
-5. **Interactive Controls & Sidebar HUD**:
-   - Toggle auxiliary grid guide lines (helps trace visual lanes to peripheral regions).
-   - Adjust volume and toggle synthesizer sound effects (using Web Audio API).
-   - Configure starting flash speed (50ms - 500ms) and session length (10 - 50 trials).
-   - Real-time score multiplier system (streaks increase point payouts).
-   - Speed performance history plotted dynamically as an SVG graph upon session completion.
-6. **Local Score Leaderboard**:
-   - Saves daily scores, accuracy rates, and peak speed records to `localStorage`.
+## 🚀 How to Run Locally
 
-## Tech Stack
+Since this application runs entirely client-side, you can run it locally in a few different ways:
 
-- **Core Structure**: HTML5 Canvas, HTML5 Semantic Tags
-- **Styling**: Tailwind CSS (v3 Play CDN) and custom CSS (glassmorphic filters, animations)
-- **Programming Language**: Vanilla ES6 JavaScript
-- **Audio Feedback**: Web Audio API (real-time synthesizers, no latency)
+### Method 1: Local HTTP Server (Recommended)
+Running through an HTTP server ensures image assets and scripts load correctly without browser security (CORS) restrictions.
+
+* **Using Python (built-in)**:
+  Open your terminal inside the project directory and run:
+  ```bash
+  python3 -m http.server 8080
+  ```
+  Then open **[http://localhost:8080](http://localhost:8080)** in your browser.
+
+* **Using Node.js**:
+  Install and run a lightweight server:
+  ```bash
+  npx http-server -p 8080
+  ```
+  Then open **[http://localhost:8080](http://localhost:8080)** in your browser.
+
+### Method 2: Direct Open
+You can simply double-click the `index.html` file in your file explorer to open it directly in your browser (`file:///` protocol). *Note: Some browsers may restrict loading local images or fonts under CORS settings.*
+
+---
+
+## 🌐 How to Deploy to the Web
+
+### Option A: GitHub Pages (Automatic Hosting)
+1. Push this directory to a public repository on your GitHub account.
+2. Go to **Settings** -> **Pages** in your repository dashboard.
+3. Under **Branch**, select **main** and click **Save**.
+4. Your site will be live at `https://<your-username>.github.io/<your-repo-name>/`.
+
+### Option B: Vercel (Instant Deploy)
+1. Run `npx vercel` inside the project folder.
+2. Follow the terminal prompts to link your account and deploy instantly for free.
+
+---
+
+## 🎮 Features & Gameplay
+
+1. **UFOV Levels Matrix**:
+   - Features a 15-level progressive campaign across 3 distinct environmental stages (Barren Desert, Farmland Pasture with grazing cows, and visual Forest tree lines silhouettes).
+   - Radial axes scale dynamically from 8 spoke lanes (24 peripheral slots) to 16 spoke lanes (48 peripheral slots).
+2. **9-Vehicle Silhouette Progression**:
+   - Implements 8 custom-drawn vintage vehicle shapes (Convertible, Roadster, Coupe, Coupe with Rack, Pickup Truck, Pickup with Rails, Station Wagon, and Panel Van) in a matching slate-blue color palette.
+   - Pairs vehicles progressively across levels (ranging from highly distinct shapes to very similar silhouettes, requiring horizontal roofline and trunk angle discrimination).
+3. **Two-Down, One-Up Adaptive Speed Engine**:
+   - Starts at $500\text{ms}$ at the beginning of any level.
+   - Speed decreases (gets faster) **only after two consecutive correct trials** (using precise timing reductions down to a floor of $32\text{ms}$).
+   - Any single error immediately increases flash duration by $+40\text{ms}$ (up to a ceiling of $2600\text{ms}$) and resets your streak.
+4. **Local Static Noise Masking**:
+   - Features a high-contrast static mask that covers the central vehicle and active peripheral coordinates (rather than the full screen), leaving the background landscape visible.
+   - The static blocks update at a comfortable rate of $120\text{ms}$ with a fine $4\text{px}$ cell size.
+5. **Developer Debug Dashboard**:
+   - Skip to any level configuration instantly using the level selector dropdown.
+   - Lock flash speed or freeze the stimulus phase to inspect graphics statically.
+   - View real-time stats including current distractors, correct streak, active coordinate lanes, and flash speed.
+6. **Web Audio Sound Effects**:
+   - Uses the Web Audio API to synthesize low-latency sound cues for success, failure, and click ticks.
+7. **SVG Performance Progression Graph**:
+   - Plots your presentation speed history dynamically as an interactive SVG graph at the end of each session.
