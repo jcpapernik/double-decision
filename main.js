@@ -84,9 +84,9 @@ const RADIUS_CLOSE = 150;
 const RADIUS_MID = 240;
 const RADIUS_FAR = 320;
 
-// Central Choice Coordinates
-const CHOICE_CAR_POS = { x: CENTER_X - 140, y: CENTER_Y };
-const CHOICE_TRUCK_POS = { x: CENTER_X + 140, y: CENTER_Y };
+// Central Choice Coordinates (positioned below the center vehicle area)
+const CHOICE_CAR_POS = { x: CENTER_X - 140, y: CENTER_Y + 140 };
+const CHOICE_TRUCK_POS = { x: CENTER_X + 140, y: CENTER_Y + 140 };
 const CHOICE_RADIUS = 80;
 
 // --- DOM References ---
@@ -803,14 +803,11 @@ function drawDecoySign(x, y, scale = 1, type = 'triangle') {
   ctx.restore();
 }
 
-// Draw visual static mask (high-contrast random pixels)
-function drawNoiseMask() {
-  ctx.fillStyle = '#0f172a';
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-  const cellSize = 12;
-  const cols = Math.ceil(CANVAS_WIDTH / cellSize);
-  const rows = Math.ceil(CANVAS_HEIGHT / cellSize);
+// Fill static high-contrast noise inside a rectangle boundary
+function fillNoiseRect(x, y, w, h) {
+  const cellSize = 6;
+  const cols = Math.ceil(w / cellSize);
+  const rows = Math.ceil(h / cellSize);
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -824,9 +821,55 @@ function drawNoiseMask() {
       } else {
         ctx.fillStyle = '#cbd5e1';
       }
-      ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+      ctx.fillRect(x + c * cellSize, y + r * cellSize, cellSize, cellSize);
     }
   }
+}
+
+// Draw visual static mask (local shapes over background landscape, not full screen)
+function drawNoiseMask() {
+  // 1. Draw the clean background landscape first
+  drawProceduralBackground();
+
+  // 2. Draw central rounded rectangle mask (covering the vehicle choice area)
+  ctx.save();
+  ctx.beginPath();
+  const rx = CENTER_X - 110;
+  const ry = CENTER_Y - 65;
+  const rw = 220;
+  const rh = 130;
+  const radius = 18;
+  ctx.moveTo(rx + radius, ry);
+  ctx.lineTo(rx + rw - radius, ry);
+  ctx.quadraticCurveTo(rx + rw, ry, rx + rw, ry + radius);
+  ctx.lineTo(rx + rw, ry + rh - radius);
+  ctx.quadraticCurveTo(rx + rw, ry + rh, rx + rw - radius, ry + rh);
+  ctx.lineTo(rx + radius, ry + rh);
+  ctx.quadraticCurveTo(rx, ry + rh, rx, ry + rh - radius);
+  ctx.lineTo(rx, ry + radius);
+  ctx.quadraticCurveTo(rx, ry, rx + radius, ry);
+  ctx.closePath();
+  ctx.clip();
+  
+  fillNoiseRect(rx, ry, rw, rh);
+  ctx.restore();
+
+  // 3. Draw circular static mask at all possible peripheral sign locations
+  const currentRadius = getPeripheralRadius();
+  const dirs = getDirectionsForLevel();
+  dirs.forEach(dir => {
+    const px = CENTER_X + currentRadius * Math.cos(dir.angle);
+    const py = CENTER_Y + currentRadius * Math.sin(dir.angle);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(px, py, 40, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.clip();
+
+    fillNoiseRect(px - 40, py - 40, 80, 80);
+    ctx.restore();
+  });
 }
 
 // Draw central fixation crosshair
