@@ -721,5 +721,18 @@ window.addEventListener('DOMContentLoaded', () => {
   initNoiseFrames();
   loadLeaderboard();
   updateCampaignLevelUI();
+
+  // Expose automation hooks for browser automation/brute-forcing testing
+  window.gameAutomation = {
+    state,
+    LEVEL_MATRIX,
+    CHOICE_CAR_POS,
+    CHOICE_TRUCK_POS,
+    getDirectionsForLevel,
+    getPeripheralRadius,
+    initGame,
+    changeState
+  };
+
   requestAnimationFrame(gameLoop);
 });
