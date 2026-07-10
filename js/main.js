@@ -711,7 +711,7 @@ dbFreezeStimulus.addEventListener('change', (e) => {
 });
 
 // --- Initialization ---
-window.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   // Restore persistent level progress on load
   const restoredIndex = localStorage.getItem('double_decision_campaign_level');
   if (restoredIndex !== null) {
@@ -735,4 +735,10 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   requestAnimationFrame(gameLoop);
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
